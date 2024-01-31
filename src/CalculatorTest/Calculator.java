@@ -9,11 +9,11 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Calculator {
-    static boolean optional = true; // это для user-friendly интерфейса, но можно выключить
-    static boolean debug = false; // это для дебага, можно включить. Ниже настройки:
-    static boolean signDebug = true; // показывает найденную арифметическую операцию (if debug = true)
-    static boolean valueDebug = true; // показывает найденные введённые значения (if debug = true)
-    static boolean romanDebug = true; // показывает, найдены ли римские символы во введённом выражении (if debug = true)
+    static boolean optional = true;
+    static boolean debug = false; 
+    static boolean signDebug = true; 
+    static boolean valueDebug = true; 
+    static boolean romanDebug = true; 
 
     public static void main(String[] args) {
 
@@ -36,7 +36,7 @@ public class Calculator {
         int[] values = expression.valueCheck(input);
         boolean roman = expression.romanCheck(input);
 
-        switch (sign) { // непосредственный расчёт результата
+        switch (sign) { 
             case '+' -> resultArabic = (values[0] + values[1]);
             case '-' -> resultArabic = (values[0] - values[1]);
             case '*' -> resultArabic = (values[0] * values[1]);
@@ -51,7 +51,7 @@ public class Calculator {
         }
     }
 
-    static boolean contains(@NotNull String content, String lookingFor) { // метод для поиска арифметического знака
+    static boolean contains(@NotNull String content, String lookingFor) { 
         return content.contains(lookingFor);
     }
 
@@ -79,7 +79,7 @@ public class Calculator {
 
     static class Operations {
 
-        char signCheck(String input) { // проверка арифметической операции (знака)
+        char signCheck(String input) { 
             char sign;
             if (contains(input, "-")) {
                 sign = '-';
@@ -99,7 +99,7 @@ public class Calculator {
             return sign;
         }
 
-        boolean romanCheck(@NotNull String input) { // првоерка на наличие римских цифр (и ограничение ввода от 1 до 10)
+        boolean romanCheck(@NotNull String input) { 
             String[] stringValues = input.split("\\" + signCheck(input), 2);
             boolean check1;
             boolean check2;
@@ -126,7 +126,7 @@ public class Calculator {
             }
         }
 
-        int[] romanToArabic(@NotNull String input) { // преобразование из римских в арабские с помощью Enum (он внизу)
+        int[] romanToArabic(@NotNull String input) { 
             String[] stringValues = input.split("\\" + signCheck(input), 2);
             int[] intValues = {0, 0};
             int i = 0;
@@ -162,7 +162,7 @@ public class Calculator {
 
         }
 
-        String arabicToRoman(int input) { // преобразование из арабских в римские с помощью Enum (он внизу)
+        String arabicToRoman(int input) { 
 
             if (input < 1 || input > 3999) {
                 throw new RuntimeException("Римские числа не могут принимать значения меньше 1 (I) " +
@@ -186,7 +186,7 @@ public class Calculator {
             return sb.toString();
         }
 
-        int[] valueCheck(String input) { // проверка входных значений
+        int[] valueCheck(String input) { 
             int[] intValues = romanToArabic(input);
 
             if ((intValues[0] < 1 || intValues[0] > 11) || (intValues[1] < 1 || intValues[1] > 11)) {
