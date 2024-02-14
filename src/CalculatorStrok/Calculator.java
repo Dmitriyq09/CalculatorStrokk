@@ -16,7 +16,7 @@ public class Calculator {
             data = str.split(" - ");
             action = '-';
         } else if (str.contains(" * ")) {
-            data = str.split(" \\* ");
+            data = str.split(" \\* ");     //изменил
             action = '*';
         } else if (str.contains("/")) {
             data = str.split(" / ");
