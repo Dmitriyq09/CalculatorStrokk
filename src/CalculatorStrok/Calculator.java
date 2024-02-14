@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) throws Exception {
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите выражение:");
         String str = scanner.nextLine();
@@ -17,7 +16,7 @@ public class Calculator {
             data = str.split(" - ");
             action = '-';
         } else if (str.contains(" * ")) {
-            data = str.split("\\*");
+            data = str.split(" \\* ");
             action = '*';
         } else if (str.contains("/")) {
             data = str.split(" / ");
@@ -29,7 +28,7 @@ public class Calculator {
             if (data[1].contains("\"")) throw new Exception("Строчку можно делить или умножать только на число.");
         }
         for (int i =0; i < data.length;i++){
-            data[i] = data[i].replace("\"","");
+            data[i] = data[i].replace("\"", "");
         }
         if (action == '+') {
             System.out.println(data[0] + data[1]);
@@ -38,6 +37,7 @@ public class Calculator {
             String result = "";
             for (int i = 0; i < multiplier; i++) {
                 result+=data[0];
+
             }
             System.out.println(result);
         } else if (action == '-') {
