@@ -16,7 +16,7 @@ public class Calculator {
             data = str.split(" - ");
             action = '-';
         } else if (str.contains(" * ")) {
-            data = str.split(" \\* ");     //изменил
+            data = str.split(" \\* ");
             action = '*';
         } else if (str.contains("/")) {
             data = str.split(" / ");
@@ -31,28 +31,34 @@ public class Calculator {
             data[i] = data[i].replace("\"", "");
         }
         if (action == '+') {
-            System.out.println(data[0] + data[1]);
+            printInQuotes(data[0] + data[1]);
         } else if (action == '*') {
             int multiplier = Integer.parseInt(data[1]);
             String result = "";
             for (int i = 0; i < multiplier; i++) {
                 result+=data[0];
-
             }
-            System.out.println(result);
+            printInQuotes(result);
         } else if (action == '-') {
             int index = data[0].indexOf(data[1]);
             if(index == -1){
-                System.out.println(data[0]);
+                printInQuotes(data[0]);
             }else{
                 String result = data[0].substring(0, index);
                 result+=data[0].substring(index+data[1].length());
-                System.out.println(result);
+                printInQuotes(result);
             }
         }else{
             int newLen = data[0].length()/Integer.parseInt(data[1]);
             String result = data[0].substring(0,newLen);
-            System.out.println(result);
+            printInQuotes(result);
+        }
+
+
+    }
+    static void printInQuotes(String text){
+        if (text.length()>40){
+            System.out.println(" "+text.substring(0,40)+"..."+" ");
         }
     }
 }
